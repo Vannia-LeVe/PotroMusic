@@ -12,6 +12,7 @@ public enum Genero {
     POP,
     ROCK,
     DANCE,
+    TRAP,
     BAND,
     SALSA,
     OTRO  
