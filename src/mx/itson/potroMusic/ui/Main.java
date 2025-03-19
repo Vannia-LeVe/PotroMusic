@@ -20,7 +20,7 @@ import mx.itson.potroMusic.enums.Genero;
 public class Main {
     public static void main(String[] args) {
     
-        
+    try{    
         Scanner scanner=new Scanner(System.in);    
         System.out.println("Bienvenid@ a 🎶Potro Music🎶, donde podrás agregar tus canciones y artistas favoritos");
         //ARTISTA 
@@ -56,48 +56,80 @@ public class Main {
                            Genero: """);
         int generoUsuario=scanner.nextInt();
         
-        if(generoUsuario == 1){
-         a.setGenero(Genero.POP);    
-        }if(generoUsuario == 2){
+        if (generoUsuario ==1){
+            a.setGenero(Genero.POP);
+        }else if(generoUsuario == 2){
             a.setGenero(Genero.ROCK); 
-        }if(generoUsuario == 3){
+        }else if(generoUsuario == 3){
             a.setGenero(Genero.DANCE); 
-        }if(generoUsuario == 4){
+        }else if(generoUsuario == 4){
             a.setGenero(Genero.TRAP); 
-        }if(generoUsuario == 5){
+        }else if(generoUsuario == 5){
             a.setGenero(Genero.BAND); 
-        }if(generoUsuario == 6){
+        }else if(generoUsuario == 6){
             a.setGenero(Genero.SALSA); 
-        }if(generoUsuario == 7){
+        }else if(generoUsuario == 7){
             a.setGenero(Genero.OTRO); 
         }else{
            System.out.println("Valor incorecto, procura agregar un numero según nuestras opciones");
         }
         
+       
         
         //Canciones
         List<Cancion> canciones= new ArrayList<>();
-        System.out.println("""
-                           """);
-        
-        Cancion cancion1=new Cancion();
-        cancion1.setNombre("DTMF");
-        cancion1.setOtrden(1);
-        cancion1.setDuracion(237);
+        System.out.println("¿Cuántas canciónes tiene el album "+ a.getNombre());
+        int albumCantidad=scanner.nextInt();
         
         
-        canciones.add(cancion1);
-        a.setCanciones(canciones);
-        
-         System.out.println("Artista:  " + artista.getNombre() +","+
-        " Descripción:  " +artista.getDescripcion()+ ","+
-        " sitio web:  " +artista.getSitioWeb()+
-        " Nombre del album del artista: "+ a.getNombre()+" Genero del album: "+a.getGenero()
-         );
+        for (int i= 1; i<=albumCantidad;i++){
+            
+            Cancion cancion=new Cancion();
+            
+            System.out.println("Nombre de la canción");
+            String cancionNombre=scanner.next();
+            cancion.setNombre(cancionNombre);
+            
+            System.out.println("Duración de la canción" + cancion.getNombre()+ " en segundos");
+            int duracionCancion1=scanner.nextInt();
+            cancion.setDuracion(duracionCancion1);
+            
+            System.out.println("Orden de la cancion");
+            int ordenCancion1=scanner.nextInt();
+            cancion.setOtrden(ordenCancion1);
+            
+        canciones.add(cancion);
+            
+        }
+    a.setCanciones(canciones);
 
+        System.out.println("""
+                           <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                                                                               🎶✨PotroMusic✨🎶
+                                                                                                                                       """);                               
+      
+        System.out.println(" Tu artista favprito es......"+ artista.getNombre() +"    | Recuerda que lo puedes encontrar en "+ artista.getSitioWeb());
+        System.out.println("                                                      | Ahí encontraras más datos como los siguientes "+ artista.getDescripcion());
         
-       
-    
+        System.out.println("<<<<<<Es momento de iniciar tu experiencia musical✨🎶, para esto haz selecionado el album " + a.getNombre()+ 
+                " Excelente eleción, disfruta tus canciones de este albúm de genero " +a.getGenero()+ ">>>>>>>>");
+        
+        
+            for(Cancion c : a.getCanciones()){
+            System.out.println("____________________________________________________________________________________________________________________________________________________");
+            System.out.println("|         puesto numero: "+    c.getOtrden() +"                                                                                                                                |");
+            System.out.println("|  "                                                                           
+                                                                          +c.getNombre()                                                                                             );
+           
+        
+    System.out.println("_____________________________________o_______________________________________________________________________________________________________"+ c.getDuracion()+ "segundos");      
+    System.out.println(""" 
+                                                               |<                 |>                 >|                          
+                                                                                                                                                  """);
     }
-}
+  }catch(Exception ex){
+            System.err.println("ooh, ha ocurrido un error, procura ingrear lo que se pide");
+       } 
+    }
+}    
 
